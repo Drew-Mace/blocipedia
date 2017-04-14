@@ -17,8 +17,20 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   
   # default URL options for the Devise mailer
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
+  config.action_mailer.default_url_options = { :host => 'https://ide.c9.io/babydontsaythat/blocipedia' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.live.com',
+    :port                 => 25,
+    :domain               => 'mail.live.com',
+    :user_name            => 'dremac1@live.com',
+    :password             => 'o25ec8000',
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl =>true
+}
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
