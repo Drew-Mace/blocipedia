@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Wikis</h2>
+  <% @wikis.each do |wiki| %>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th><%= @wikis %></th>
+      </tr>
+    </thead>
+  </table>
+  <% end %>
+  <p><%= link_to "New wiki", new_wiki_url %></p>
+</div>
