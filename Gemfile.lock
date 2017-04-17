@@ -37,14 +37,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
-    autoprefixer-rails (6.7.7.1)
-      execjs
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0.alpha6)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.3)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -103,6 +100,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -201,7 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   devise
@@ -211,6 +210,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry-rails
+  pundit
   rails (= 4.2.7)
   rails_12factor
   rspec-rails
