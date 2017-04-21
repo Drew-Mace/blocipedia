@@ -5,6 +5,7 @@ class WikisController < ApplicationController
   
   def create
     @wiki = Wiki.new(params[:id])
+    authorize @wiki
     
     if @wiki.save
       redirect_to @wiki, notice: "Wiki was created."
