@@ -1,33 +1,31 @@
 class ChargesController < ApplicationController
     def new
-      @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "BigMoney Membership - #{current_user.email}",
-      amount: 15_00
-    }
     end
   
   # Creating a stripe customer object for associating with the charge
   def create
-    @amount = 15_00
-    customer = Stripe::Customer.create(
-      email: current_user.email,
-      card: params[:stripeToken]
-    )
+      # Amount in cents
+      @amount = 1500
     
-    charge = Stripe::Charge.create(
-      customer: customer.id, 
-      amount: @amount,
-      description: "BigMoney Membership - #{current_user.email}",
-      currency: 'usd'
-    )
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
     
-    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-    redirect_to user_path(current_user)
+      current_user.stripe_id = customer.id
     
-    # Send back card errors with a message
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+    
+      current_user.role = 'premium'
+      current_user.save!
+    
     rescue Stripe::CardError => e
-      flash[:alert] = e.message
+      flash[:error] = e.message
       redirect_to new_charge_path
   end
 end
