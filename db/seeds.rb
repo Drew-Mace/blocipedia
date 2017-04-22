@@ -15,7 +15,6 @@ require 'faker'
     )
   end
 
-1.times do 
   User.create!(
     email: Faker::Internet.email,
     password: "helloworld",
