@@ -5,6 +5,7 @@ class WikisController < ApplicationController
   
   def create
     @wiki = Wiki.new(params[:id])
+     @wiki.assign_attributes(wiki_params)
     authorize @wiki
     
     if @wiki.save
