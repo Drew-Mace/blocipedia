@@ -1,5 +1,6 @@
-<h1><%= @wiki.title %></h1>
-<p><%= @wiki.body %></p>
+<h1><%= markdown(@wiki.title) %></h1>
+<body><%= markdown(@wiki.body) %></body>
+
 
 <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-success' %>
 <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger' %>

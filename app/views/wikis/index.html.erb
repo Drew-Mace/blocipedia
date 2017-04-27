@@ -1,13 +1,7 @@
 <div class="container">
   <h2>Wikis</h2>
   <% @wikis.each do |wiki| %>
-  <table class="table-bordered">
-    <thead>
-      <tr>
-        <th><%= link_to "#{wiki.title}", wiki %></th>
-      </tr>
-    </thead>
-  </table>
+    <h4 class='no-dec'><%= link_to markdown(wiki.title), wiki %></h4>
   <% end %>
-  <p><%= link_to "New wiki", new_wiki_url %></p>
+  <p><%= link_to "New wiki", new_wiki_url, class: 'btn btn-success' %></p>
 </div>
