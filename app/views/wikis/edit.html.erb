@@ -1,2 +1,14 @@
 <h1>Edit Wiki</h1>
 <%= render 'wikis' %>
+
+<!-- listing all users to select collaborators -->
+<div class="form-group pull-right">
+    <p>Collaborators</p>
+    <% collaborator_ids = @wiki.collaborator_ids %>
+    <% User.all.each do |user| %>
+      <div class="user">
+        <%= check_box_tag "wiki[collaborator_ids][]", user.id, collaborator_ids.include?(user.id) %>
+        <%= user.email %> 
+      </div>
+    <% end %>
+</div>
